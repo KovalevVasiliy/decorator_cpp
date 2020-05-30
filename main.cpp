@@ -9,7 +9,7 @@ struct Decorator
 #if __cplusplus == 202002 //c++20
         return [&] <typename ...Args> (Args && ...args) {
             std::cout<<"Do something " << std::endl;
-            return std::invoke(std::forward<Function>(func), args...);
+            return std::invoke(std::forward<Function>(func), std::forward<Args>(args)...);
         };
 #elif __cplusplus == 201703L //c++17
         return [&] (auto && ...args) {
